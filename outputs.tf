@@ -95,6 +95,11 @@ output "database_subnet_group" {
   value       = "${element(concat(aws_db_subnet_group.database.*.id, list("")), 0)}"
 }
 
+output "database_subnet_group_name" {
+  description = "Name of database subnet group"
+  value       = "${element(concat(aws_database_subnet_group.elasticache.*.name, list("")), 0)}"
+}
+
 output "redshift_subnets" {
   description = "List of IDs of redshift subnets"
   value       = ["${aws_subnet.redshift.*.id}"]
